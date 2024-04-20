@@ -29,12 +29,13 @@ dataCall().then((val) => {
     {
        ele.innerText=data.product.compare_at_price;
     }
+    thumbnailImgSrc=['./assests/Rectangle 4.jpg','./assests/Rectangle 5.png','./assests/Rectangle 7.png','./assests/Rectangle 8.jpg']
     const imgContainer=document.getElementsByClassName("thumbnail-img");
-    for(let ele of data.product.images)
+    for(let ele of thumbnailImgSrc)
     {
-       imageUrl.push(ele.src);
+       imageUrl.push(ele);
        const img=document.createElement("img");
-       img.setAttribute('src',ele.src);
+       img.setAttribute('src',ele);
        img.classList.add('img-here')
        for(let ele of imgContainer)
        {
@@ -43,7 +44,10 @@ dataCall().then((val) => {
     }
     const mimg=document.getElementsByClassName("main-img");
     const mainImage=document.createElement("img");
-    mainImage.setAttribute('src',imageUrl[0]);
+    // mainImage.setAttribute('src',imageUrl[0]);
+    
+    mainImage.setAttribute('src','./assests/main-img.png');
+
     mainImage.classList.add('product-img')
     for(let ele of mimg)
     {
@@ -56,6 +60,7 @@ dataCall().then((val) => {
         getImg[i].addEventListener('click',()=>
         {
             mainImgUrl=getImg[i].src;
+            
             mainImage.setAttribute('src',mainImgUrl);
             getImg[i].classList.add('active-img');
             console.log(getImg[i].classList);
